@@ -17,7 +17,6 @@ class Core {
         return hash('ripemd256', $key.crc32($user.$role).getenv('TOKEN'));
     }
 
-
     public function __construct($type = NULL)
     {
         $lines = file(dirFlex.'.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -201,6 +200,16 @@ class Core {
             <div class='left'>".$this->breadcrumb()."</div>
             <div class='right'>".date('d F Y')." ($ip)</div>
         </div>";
+    }
+
+    public function photoDesc($title, $format, $size)
+    {
+        echo "<span class='desc'>
+            $title
+            <div class='left'>
+                <span aria-label='Format' data-balloon-pos='up'><i class='micon'>image</i>$format.</span><span aria-label='Minimal Size' data-balloon-pos='up'><i class='micon'>photo_size_select_large</i>$size Pixel</span>
+            </div>
+        </span>";
     }
 
     public function modified($created, $modified, $link)
